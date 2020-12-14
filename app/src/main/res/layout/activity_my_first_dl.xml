@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/fragment_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal"
+        android:paddingBottom="7dp"
+        android:paddingTop="6dp">
+
+    <RadioButton
+         android:id="@+id/radio0"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:button="@null"
+         android:gravity="center"
+         android:drawableTop="@drawable/xsy"
+         android:text="首 页"
+         android:textSize="16dp" />
+
+    <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:drawableTop="@drawable/xfx"
+            android:text="发 现"
+            android:textSize="16dp" />
+
+    <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:drawableTop="@drawable/xxx"
+            android:text="消 息"
+            android:textSize="16dp"  />
+
+    <RadioButton
+            android:id="@+id/radio3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:drawableTop="@drawable/xwd"
+            android:text="我 的"
+            android:textSize="16dp" />
+    </RadioGroup>
+
+
+    <ScrollView
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/radioGroup"
+        android:layout_alignParentLeft="true"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
