@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     >
 
     <androidx.viewpager.widget.ViewPager
@@ -21,6 +22,7 @@
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:background="#ffffff"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:orientation="horizontal"
@@ -34,6 +36,7 @@
          android:layout_weight="1"
          android:button="@null"
          android:gravity="center"
+        android:background="#ffffff"
          android:drawableTop="@drawable/xsy"
          android:text="首 页"
          android:textSize="16dp" />
@@ -44,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:background="#ffffff"
             android:gravity="center"
             android:drawableTop="@drawable/xfx"
             android:text="发 现"
@@ -56,6 +60,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
+            android:background="#ffffff"
             android:drawableTop="@drawable/xxx"
             android:text="消 息"
             android:textSize="16dp"  />
@@ -66,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:background="#ffffff"
             android:gravity="center"
             android:drawableTop="@drawable/xwd"
             android:text="我 的"

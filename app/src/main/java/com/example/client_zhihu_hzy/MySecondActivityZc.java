@@ -2,13 +2,17 @@ package com.example.client_zhihu_hzy;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.os.Looper;
 import android.support.v4.app.*;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
+
+import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -18,7 +22,7 @@ import java.security.PrivateKey;
 
 public class MySecondActivityZc extends AppCompatActivity implements View.OnClickListener{
     private Button btnReg,btnRegQx,button_yz;
-    private EditText editName,editPwd,editRepwd,editName1,editName11;
+    private EditText editEmail,editPwd,editRepwd,editName,editYzm;
     private String result;
     private String email;
     private String usernametrue;
@@ -35,9 +39,9 @@ public class MySecondActivityZc extends AppCompatActivity implements View.OnClic
         button_yz=(Button)findViewById(R.id.button_yz);
         btnReg=(Button)findViewById(R.id.btnReg);
         btnRegQx=(Button)findViewById(R.id.btnRegQx);
+        editEmail=(EditText) findViewById(R.id.editEmail);
         editName=(EditText) findViewById(R.id.editName);
-        editName1=(EditText) findViewById(R.id.editName);
-        editName11=(EditText) findViewById(R.id.editName);
+        editYzm=(EditText) findViewById(R.id.editYzm);
         editPwd=(EditText) findViewById(R.id.editPwd);
         editRepwd=(EditText) findViewById(R.id.editRepwd);
 
@@ -49,105 +53,92 @@ public class MySecondActivityZc extends AppCompatActivity implements View.OnClic
                 startActivityForResult(intent,RESULT_CODE);
             }
         });
-//////////这里没写完！！！！！！
+
         button_yz.setOnClickListener(new View.OnClickListener() {
-            String url = "http://47.116.128.111:8080/user/register";
+            String url = "http://47.116.128.111:8080/user/verify";
             @Override
             public void onClick(View v) {
-                new HttpThread1(url, editName.getText().toString()).start();
+                new HttpThread1(url, editEmail.getText().toString()).start();
+                Toast.makeText(getApplicationContext(), "验证码已发送！", Toast.LENGTH_SHORT).show();
             }
         });
+        btnReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(){public void run() {
 
+                    switch (v.getId()) {
+                        case R.id.btnReg:
+                            email = editEmail.getText().toString().trim();
+                            usernametrue = editName.getText().toString().trim();
+                            password = editPwd.getText().toString().trim();
+                            pwd2 = editRepwd.getText().toString().trim();
+                            email_yz = editYzm.getText().toString().trim();
+                            //System.out.println("email:"+email);
+
+                            if(!password.equals(pwd2)){
+                                runOnUiThread(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(), "两次输入密码不一致，请重新输入！", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }else {
+                                try {
+                                    //设置路径
+                                    String path="http://47.116.128.111:8080/user/register";
+
+                                    JSONObject json = new JSONObject();
+                                    try {
+                                        json.put("email",email);
+                                        json.put("verification_code",email_yz);
+                                        json.put("password",password);
+                                        json.put("re_password",pwd2);
+                                        json.put("name",usernametrue);
+                                    }catch (Exception ignore){
+                                        Log.d("HttpThread1","异常");//将从服务器接收来的数据打印出来
+                                    }
+                                    Log.d("json->",json.toString());
+                                    PayHttpUtils payHttpUtils = new PayHttpUtils();
+                                    String res = payHttpUtils.post(path, json.toString());
+                                    Log.d("res",res);
+                                    Looper.prepare();
+
+                                    Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
+                                    String email1 = editEmail.getText().toString();
+                                    String password1 = editPwd.getText().toString();
+                                    Intent intent = new Intent(MySecondActivityZc.this, MainActivity.class);
+                                    //传值有问题
+                                    intent.putExtra("editEmail",email1);
+                                    intent.putExtra("editPwd",password1);
+                                    //设置结果码和返回的activity
+                                    startActivity(intent);
+                                    Looper.loop();//增加部分
+//                            // TODO Auto-generated catch block
+//                            e.printStackTrace();}
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                };}.start();
+
+            }
+        });
 
     }
 
     @Override
     public void onClick(final View v) {
-        new Thread(){public void run() {
 
-            switch (v.getId()) {
-                case R.id.btnReg:
-                    email = editName.getText().toString().trim();
-                    usernametrue = editName1.getText().toString().trim();
-                    password = editPwd.getText().toString().trim();
-                    pwd2 = editRepwd.getText().toString().trim();
-                    email_yz = editName11.getText().toString().trim();
-                    //System.out.println("email:"+email);
-
-                    if(!password.equals(pwd2)){
-                        runOnUiThread(new Runnable() {
-
-                            @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(), "两次输入密码不一致，请重新输入！", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }else {
-                        try {
-                            //设置路径
-                            String path="http://47.116.128.111:8080/user/register";
-                            //?id="+username+"&password=" + pwd1+ "&email=" +email+"
-                            //创建URL对象
-                            URL url=new URL(path);
-                            //创建一个HttpURLconnection对象
-                            HttpURLConnection conn =(HttpURLConnection) url.openConnection();
-                            //设置请求方法
-                            conn.setRequestMethod("POST");
-                            //设置请求超时时间
-                            conn.setReadTimeout(5000);
-                            //conn.setConnectTimeout(5000);
-                            //Post方式不能设置缓存，需要手动设置
-                            //conn.setUseCaches(false);
-                            //准备要发送的数据
-                            String data ="editName="+ URLEncoder.encode(email,"utf-8")+"&email_yzm="+URLEncoder.encode(email_yz,"utf-8")+"&usernametrue1="+URLEncoder.encode(usernametrue,"utf-8")+"&password="+URLEncoder.encode(password,"utf-8")+"&passwordRe="+URLEncoder.encode(pwd2,"utf-8");
-                            //String data ="id="+ username +"&password="+ pwd1 +"&email="+ email+"";
-                            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");//使用的是表单请求类型
-                            conn.setRequestProperty("Content-Length", data.length()+"");
-                            conn.setDoInput(true);
-                            conn.setDoOutput(true);
-                            //连接
-                            // conn.connect();
-                            //获得返回的状态码
-                            conn.getOutputStream().write(data.getBytes());
-                            int code=conn.getResponseCode();
-                            if(code==200){
-                                //获得一个文件的输入流
-                                InputStream inputStream= conn.getInputStream();
-                                result = StringTools.readStream(inputStream);
-                                //更新UI
-                                showToast(result);
-                            }
-                        } catch (Exception e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-                    }
-                    break;
-                default:
-                    break;
-            }
-
-
-        };}.start();
     }
-    public void showToast(final String content){
-        runOnUiThread(new Runnable() {
 
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                if(result.equals("success")){
-                    Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent();
-                    intent.putExtra("email", email);
-                    intent.putExtra("password", password);
-                    setResult(RESULT_CODE, intent);
-                    finish();
-                }
-
-            }
-        });
-    }
 
 
 }

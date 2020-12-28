@@ -19,7 +19,7 @@ public class HttpThread1 extends Thread{
     private void doGet()//使用get方式给服务器传参数
     {
         try {
-            url = url + "?editName=" + editName ;//通过get方式传参数
+            url = url + "?email=" + editName ;//通过get方式传参数
             URL httpUrl = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) httpUrl.openConnection();
             connection.setRequestMethod("GET");

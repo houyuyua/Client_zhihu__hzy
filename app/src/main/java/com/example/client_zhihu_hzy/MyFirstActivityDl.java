@@ -77,13 +77,13 @@ public class MyFirstActivityDl extends FragmentActivity implements View.OnClickL
                         homeBtn.setChecked(true);
                         break;
                     case TAB_FIND:
-                        homeBtn.setChecked(true);
+                        findBtn.setChecked(true);
                         break;
                     case TAB_MESS:
-                        homeBtn.setChecked(true);
+                        messBtn.setChecked(true);
                         break;
                     case TAB_MINE:
-                        homeBtn.setChecked(true);
+                        mineBtn.setChecked(true);
                         break;
                     default:
                         break;

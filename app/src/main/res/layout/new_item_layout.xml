@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="#F6F9FB"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/quesTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示问题的标题"
+        android:layout_margin="5dp"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/imgsrc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quesTitle"
+        android:src="@mipmap/ic_launcher" />
+
+
+    <TextView
+        android:id="@+id/quesContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imgsrc"
+        android:layout_below="@id/quesTitle"
+        android:layout_marginLeft="5dp"
+        android:text="显示问题的内容"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16dp" />
+
+
+
+
+
+
+</RelativeLayout>

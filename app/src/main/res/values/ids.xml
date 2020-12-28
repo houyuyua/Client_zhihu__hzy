@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="top_jianxi" type="id" />
+    <item name="rlyt_title" type="id" />
+    <item name="sskuang" type="id" />
+    <item name="iv_fabuqu" type="id" />
+    <item name="llyt_title" type="id" />
+    <item name="rlyt_guanzhu" type="id" />
+    <item name="iv_guanzhu" type="id" />
+    <item name="zh_guanzhu" type="id" />
+    <item name="rlyt_tuijian" type="id" />
+    <item name="iv_tuijian" type="id" />
+    <item name="zh_tuijian" type="id" />
+    <item name="rlyt_rebang" type="id" />
+    <item name="iv_rebang" type="id" />
+    <item name="zh_rebang" type="id" />
+    <item name="listview" type="id" />
+</resources>

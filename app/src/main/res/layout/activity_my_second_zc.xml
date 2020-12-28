@@ -33,7 +33,7 @@
         <EditText
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editName"/>
+            android:id="@+id/editEmail"/>
 
         <Button
             android:id="@+id/button_yz"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="验证"
-            android:background="#F1AFC5"
+            android:background="#1586DF"
             android:textColor="#ffffff"
             android:textSize="16dp"/>
         <TextView
@@ -69,7 +69,7 @@
         <EditText
             android:layout_width="343dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editName11"/>
+            android:id="@+id/editYzm"/>
     </LinearLayout>
 
     <LinearLayout
@@ -90,7 +90,7 @@
     <EditText
         android:layout_width="343dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editName1"/>
+        android:id="@+id/editName"/>
     </LinearLayout>
 
     <LinearLayout

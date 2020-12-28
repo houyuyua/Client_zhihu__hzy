@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -36,20 +39,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sp = getSharedPreferences("config", 0);
         btnLogin.setOnClickListener(this);
         btnReg.setOnClickListener(this);
-        String email = sp.getString("email", "");
-        String password = sp.getString("password", "");
+        email = editName.getText().toString().trim();
+
+        password = editPwd.getText().toString().trim();
         editName.setText(email);
         this.editPwd.setText(password);
+        ////传值没写完
+        Intent intent =getIntent();
+        String email = intent.getStringExtra("editEmail");
+        String password = intent.getStringExtra("editPwd");
+        editName.setText(email);
+        editPwd.setText(password);
 
     }
-        @Override
-        protected void onActivityResult(int requestCode,int resultCode,Intent data){
-            super.onActivityResult(requestCode,resultCode,data);
-            if(requestCode==REQUEST_CODE&&resultCode==REQUEST_CODE){
-                editName.setText(data.getStringExtra("email"));
-                editPwd.setText(data.getStringExtra("password"));
-            }
-        }
+
+
 
     @Override
     public void onClick(View v) {
@@ -68,53 +72,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 //设置路径
                                 String path="http://47.116.128.111:8080/user/login";
                                 //创建URL对象
-                                URL url=new URL(path);
-                                //创建一个HttpURLConnection对象
-                                HttpURLConnection conn=(HttpURLConnection) url.openConnection();
-                                //设置请求方法
-                                conn.setRequestMethod("POST");
-                                //设置请求超时时间
-                                conn.setReadTimeout(5000);
-                                conn.setConnectTimeout(5000);
+                                JSONObject json = new JSONObject();
+                                try {
+                                    json.put("email",email);
+                                    json.put("password",password);
 
-                                //Post方式不能设置缓存，需要手动设置
-                                conn.setUseCaches(false);
-                                //设置我们的请求数据
-                                String data="email="+email+"&password="+password;
-                                conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");//使用的是表单请求类型
-                                conn.setRequestProperty("Content-Length", data.length()+"");
-                                conn.setDoOutput(true);
-                                conn.getOutputStream().write(data.getBytes());
-//		                    //连接
-//		                    conn.connect();
-//							//获取一个输出流
-//							OutputStream out=conn.getOutputStream();
-//							out.write(data.getBytes());
-                                //获取服务器返回的状态吗
-                                int code=conn.getResponseCode();
-                                if(code==200){
-                                    //获取服务器返回的输入流对象
-                                    InputStream in= conn.getInputStream();
-                                    System.out.println();
-                                    result = StreamTools.readStreamToString(in);
-                                    //更新UI
-                                    runOnUiThread(new Runnable() {
-
-                                        @Override
-                                        public void run() {
-                                            if(result.equals("success"))
-                                                // TODO Auto-generated method stub
-                                                Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent();
-                                            intent.setClassName("com.example.client_zhihu_hzy", "com.example.client_zhihu_hzy.MyFirstActivityDl");
-                                            startActivity(intent);
-                                        }
-                                    });
+                                }catch (Exception ignore){
+                                    Log.d("HttpThread1","异常");//将从服务器接收来的数据打印出来
                                 }
+                                Log.d("json->",json.toString());
+                                PayHttpUtils payHttpUtils = new PayHttpUtils();
+                                String res = payHttpUtils.post(path, json.toString());
+                                Log.d("res",res);
+                                //登录跳转
+                                Intent intent=new Intent(MainActivity.this,MyFirstActivityDl.class);
+                                startActivityForResult(intent,REQUEST_CODE);
                             } catch (Exception e) {
-                                // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
+
 
                         };
                     }.start();
@@ -122,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btnReg:
-                //跳转到登录页面
+                //跳转到注册页面
                 Intent intent=new Intent(this,MySecondActivityZc.class);
                 startActivityForResult(intent,REQUEST_CODE);
                 break;
