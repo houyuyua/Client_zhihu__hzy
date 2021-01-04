@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 String res = payHttpUtils.post(path, json.toString());
                                 Log.d("res",res);
                                 //登录跳转
-                                Intent intent=new Intent(MainActivity.this,MyFirstActivityDl.class);
+                                Intent intent=new Intent(MainActivity.this,homeActivity.class);
                                 startActivityForResult(intent,REQUEST_CODE);
                             } catch (Exception e) {
                                 e.printStackTrace();

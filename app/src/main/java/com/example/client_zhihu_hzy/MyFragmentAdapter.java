@@ -1,13 +1,12 @@
 package com.example.client_zhihu_hzy;
 
-import android.widget.Switch;
-
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class MyFragmentAdapter extends FragmentPagerAdapter {
+
+
     public final static int TAB_COUNT = 4;
     public MyFragmentAdapter(FragmentManager fm){ super(fm);
     }

@@ -1,45 +1,27 @@
 package com.example.client_zhihu_hzy;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
-import com.example.client_zhihu_hzy.adapter.guanzhuFragment;
-import com.example.client_zhihu_hzy.adapter.rebangFragment;
-import com.example.client_zhihu_hzy.adapter.tuijianFragment;
-import com.google.android.material.internal.ViewUtils;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity_sy extends AppCompatActivity implements View.OnClickListener {
+public class homeActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private List<Content> contentList = new ArrayList<>();
@@ -50,42 +32,42 @@ public class MainActivity_sy extends AppCompatActivity implements View.OnClickLi
     private String originAddress = "http://47.116.128.111:8080/question";
 
 
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        sendRequestWithHttpURLConnection();
-        ContentAdapter adapter = new ContentAdapter(contentList);
-        recyclerView.setAdapter(adapter);
-
-        switch (requestCode) {
-            case 1:
-
-                break;
-            default:
-                break;
-        }
-    }
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        sendRequestWithHttpURLConnection();
+//        ContentAdapter adapter = new ContentAdapter(contentList);
+//        recyclerView.setAdapter(adapter);
+//
+//        switch (requestCode) {
+//            case 1:
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_sy);
+        setContentView(R.layout.activity_home);
+        sendRequestWithHttpURLConnection();
         initView();
         initEvent();
-        sendRequestWithHttpURLConnection();
-
+//        sendRequestWithHttpURLConnection();
+        
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         ContentAdapter adapter = new ContentAdapter(contentList);
         recyclerView.setAdapter(adapter);
+
     }
 
 
     //初始化控件方法
     private void initView() {
-        iv_fabuques=(Button)iv_fabuques.findViewById(R.id.iv_fabuques);
-        recyclerView = (RecyclerView) recyclerView.findViewById(R.id.rv_All);
+        iv_fabuques=(Button)findViewById(R.id.iv_fabuques);
+        recyclerView = (RecyclerView)findViewById(R.id.rv_All);
     }
 
     //注册事件方法
@@ -100,7 +82,7 @@ public class MainActivity_sy extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_fabuques :
-                Intent intent = new Intent(MainActivity_sy.this,ques_send.class);
+                Intent intent = new Intent(homeActivity.this,ques_send.class);
                 startActivity(intent);
                 break;
 
@@ -136,25 +118,23 @@ public class MainActivity_sy extends AppCompatActivity implements View.OnClickLi
         //解析Jason数组
         java.lang.reflect.Type type = new TypeToken<syReturnData>() {}.getType();
         syReturnData = gson.fromJson(jsonData, type);
+        //提取问题列表
+        List<questionData> list_questions = syReturnData.getData().getList_data();
 
-        List<questionData> list_questions = syReturnData.getData().getList_data();//问题列表提取成功
 
-
-
-        Log.d("HomeFragment","jsonData is "+jsonData);
-        Log.d("HomeFragment", "message is " + syReturnData.getMessage());
-
-        Log.d("HomeFragment", "list_questions[0] =  " + list_questions.get(0).toString());//测试成功
-
-        Log.d("HomeFragment", "list_questions[1].title =  " + list_questions.get(5).getTitle());
-
-        Log.d("HomeFragment", "list_questions[1].content =  " + list_questions.get(5).getContent());
-
+        Log.d("ceshi","jsonData is "+jsonData);
+        Log.d("ceshi", "message is " + syReturnData.getMessage());
+//执行失败
+        Log.d("ceshi", "list_questions " + syReturnData.getData().getList_data().toString());
+        Log.d("ceshi", "list_questions[0] =  " + list_questions.get(0).toString());
+        Log.d("ceshi", "list_questions[1].title =  " + list_questions.get(1).getTitle());
+        Log.d("ceshi", "list_questions[1].content =  " + list_questions.get(2).getContent());
 
 
         for(int i=0;i<list_questions.size();i++){
             Content question = new Content(list_questions.get(i).getTitle(),R.drawable.fake,
                     "用户",list_questions.get(i).getContent(),"10 赞同","20评论");
+            Log.d("6666", "666666666666666" );
             contentList.add(question);
 
         }
@@ -162,6 +142,17 @@ public class MainActivity_sy extends AppCompatActivity implements View.OnClickLi
 
 
         //Handler(syReturn_data);
+    }
+    private void Handler(syReturnData syReturnData){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(syReturnData.getMessage().equals("OK")) {
+                    Toast.makeText(homeActivity.this, "问题列表加载成功", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            }
+        });
     }
 
 

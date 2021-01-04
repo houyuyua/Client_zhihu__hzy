@@ -16,12 +16,12 @@ public class ques_send extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ques_send);
 
-        ques_quxiao =(Button)findViewById(R.id.btnRegQx);
+        ques_quxiao =(Button)findViewById(R.id.ques_quxiao);
         ques_quxiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent(ques_send.this,MainActivity.class);
+                Intent intent=new Intent(ques_send.this,homeActivity.class);
                 startActivityForResult(intent,RESULT_CODE);
             }
         });

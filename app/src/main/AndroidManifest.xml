@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ques_send" />
+          <activity android:name=".homeActivity"></activity>
+        <activity
+            android:name=".ques_send"
+            android:launchMode="singleTask"
+            />
         <activity android:name=".MainActivity_wd" />
         <activity android:name=".MainActivity_xx" />
         <activity android:name=".MainActivity_fx" />
