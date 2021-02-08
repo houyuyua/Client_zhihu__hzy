@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingConstraints" >
+    <TextView
+        android:id="@+id/ques_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请输入问题的标题："
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <EditText
+        android:id="@+id/et_publishTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_edit"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:hint="请在此处输入您问题的内容"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ques_title"
+        android:minLines="2"
+        android:maxLines="3"/>
+
+    <TextView
+        android:id="@+id/ques_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请输入问题的内容："
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_publishTitle"
+        app:layout_constraintVertical_bias="0.039" />
+
+    <EditText
+        android:id="@+id/et_publishDescribe"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_edit"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:hint="请在此处输入您问题的content内容"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ques_content"
+        android:minLines="15"
+        android:maxLines="20"/>
+
+    <Button
+        android:id="@+id/bt_checkPublish"
+        android:layout_width="104dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="256dp"
+        android:background="@drawable/button_drawable"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnLogin"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/ques_quxiao"
+        android:layout_width="99dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:background="@drawable/button_drawable"
+        android:text="返回"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/bt_checkPublish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnReg" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

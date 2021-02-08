@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="         "
+            android:id="@+id/textViewtool0"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="         "
+            android:id="@+id/textViewtool11"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="邮    箱：    "
+            android:textSize="16dp"
+            android:id="@+id/textView"/>
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editEmail"/>
+
+        <Button
+            android:id="@+id/button_yz"
+            android:layout_width="33dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="验证"
+            android:background="#1586DF"
+            android:textColor="#ffffff"
+            android:textSize="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="        "
+            android:id="@+id/textViewtool17"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="         "
+            android:id="@+id/textViewtool111"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="验证码：    "
+            android:textSize="16dp"
+            android:id="@+id/textView11"/>
+        <EditText
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editYzm"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="         "
+            android:id="@+id/textViewtool1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户名：    "
+            android:textSize="16dp"
+            android:id="@+id/textView1"/>
+        <EditText
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editName"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="         "
+            android:id="@+id/textViewtool2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密    码：    "
+            android:textSize="16dp"
+            android:id="@+id/textView2"/>
+        <EditText
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:id="@+id/editPwd"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="         "
+            android:id="@+id/textViewtool3"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密码确认："
+            android:textSize="16dp"
+            android:id="@+id/textView3"/>
+
+        <EditText
+            android:id="@+id/editRepwd"
+            android:layout_width="343dp"
+            android:inputType="textPassword"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="43dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="         "
+            android:id="@+id/textViewtool00"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="                           "
+            android:id="@+id/textViewtool25"/>
+
+        <Button
+            android:id="@+id/btnReg"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/button_drawable"
+            android:text="注册"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="                          "
+            android:id="@+id/textViewtool275"/>
+
+        <Button
+            android:id="@+id/btnRegQx"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/button_drawable"
+            android:text="取消"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="                  "
+            android:id="@+id/textViewtool245"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

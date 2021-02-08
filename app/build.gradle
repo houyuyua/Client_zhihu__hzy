@@ -1,4 +1,4 @@
-plugins {
+    plugins {
     id 'com.android.application'
 }
 
@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.client_zhihu_hzy"
+        applicationId "com.example.client_zhihu_fsr"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -33,19 +33,24 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.viewpager:viewpager:1.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    compile 'com.squareup.okhttp3:okhttp:3.5.0'
+    compile 'com.google.code.gson:gson:2.7'
+    api 'com.sackcentury:shinebutton:0.2.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+
     implementation files('libs\\activation.jar')
     implementation files('libs\\mail.jar')
     implementation 'androidx.navigation:navigation-fragment:2.3.1'
     implementation 'androidx.navigation:navigation-ui:2.3.1'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    //implementation 'com.loopj.android:android-async-http:1.4.9'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+
     implementation 'com.squareup.okhttp:okhttp:2.4.0'
-    implementation 'com.google.code.gson:gson:2.6.2'
+//    implementation 'com.google.code.gson:gson:2.6.2'
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'com.squareup.okio:okio:2.1.0'
 

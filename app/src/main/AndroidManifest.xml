@@ -11,18 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-          <activity android:name=".homeActivity"></activity>
-        <activity
-            android:name=".ques_send"
-            android:launchMode="singleTask"
-            />
-        <activity android:name=".MainActivity_wd" />
-        <activity android:name=".MainActivity_xx" />
-        <activity android:name=".MainActivity_fx" />
-        <activity android:name=".MainActivity_sy" />
-        <activity android:name=".MySecondActivityZc" />
-        <activity android:name=".MyFirstActivityDl" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.client_zhihu_hzy.Activity.EditAnswerActivity"></activity>
+        <activity android:name="com.example.client_zhihu_hzy.Activity.MyAnswerActivity"></activity>
+        <activity android:name="com.example.client_zhihu_hzy.Activity.WriteAnswerActivity" />
+        <activity android:name="com.example.client_zhihu_hzy.Activity.EditQuestionActivity" />
+        <activity android:name="com.example.client_zhihu_hzy.Activity.OthersQuestionActivity" />
+        <activity android:name="com.example.client_zhihu_hzy.Activity.OthersAnswerActivity" />
+        <activity android:name="com.example.client_zhihu_hzy.Activity.MyQuestionActivity" />
+        <activity android:name="com.example.client_zhihu_hzy.Activity.PublishActivity" />
+        <activity android:name="com.example.client_zhihu_hzy.Activity.MineActivity" />
+        <activity android:name="com.example.client_zhihu_hzy.Activity.HomeActivity" />
+        <activity android:name="com.example.client_zhihu_hzy.Activity.RegisterActivity" />
+        <activity android:name="com.example.client_zhihu_hzy.Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

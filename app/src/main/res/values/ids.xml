@@ -15,4 +15,11 @@
     <item name="iv_rebang" type="id" />
     <item name="zh_rebang" type="id" />
     <item name="listview" type="id" />
+    <item name="tvEditTitle" type="id" />
+    <item name="etEditTitle" type="id" />
+    <item name="tvEditDesc" type="id" />
+    <item name="etEditDesc" type="id" />
+    <item name="btDelete" type="id" />
+    <item name="btSave" type="id" />
+    <item name="bt_comment" type="id" />
 </resources>
