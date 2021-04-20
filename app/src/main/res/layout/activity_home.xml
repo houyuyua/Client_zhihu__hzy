@@ -124,12 +124,13 @@
                 android:background="#1586DF"
                 android:visibility="invisible"/>
 
-            <TextView
+            <Button
                 android:id="@+id/zh_rebang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="热榜"
+                android:background="@color/white"
                 android:textColor="@color/textcolor"
                 android:textSize="@dimen/title_text_change" />
         </RelativeLayout>
@@ -173,8 +174,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:button="@null"
+
                 android:gravity="center"
-                android:background="#ffffff"
+                android:background="#DBEDFB"
                 android:drawableTop="@drawable/xsy"
                 android:text="首 页"
                 android:textSize="16dp" />

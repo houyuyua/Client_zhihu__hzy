@@ -1,98 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="MissingConstraints" >
+    android:background="@color/white">
 
-
-    <ImageButton
-        android:id="@+id/ib_HeadPortrait"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/head2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tv_UserName"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_UserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用户名"
-        android:textSize="25dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintLeft_toRightOf="@+id/ib_HeadPortrait"
-        app:layout_constraintTop_toTopOf="@+id/ib_HeadPortrait"
-        />
-
-    <TextView
-        android:id="@+id/tv_career"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="个性签名"
-        android:textSize="25dp"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintLeft_toRightOf="@+id/ib_HeadPortrait"
-        app:layout_constraintTop_toBottomOf="@+id/tv_UserName"
-        />
-
-    <Button
-        android:id="@+id/bt_EditMaterials"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="编辑资料"
-        android:textSize="20dp"
-        android:background="#1586DF"
-        android:textColor="#ffffff"
-        android:layout_marginRight="40dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/ib_HeadPortrait"
-        />
-
-    <Button
-        android:id="@+id/bt_release"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="动态"
-        android:background="#1586DF"
-        android:textColor="#ffffff"
-        android:textSize="25dp"
-        android:layout_marginTop="200dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_EditMaterials"
-        app:layout_constraintRight_toLeftOf="@+id/bt_answer"
-        />
-
-    <Button
-        android:id="@+id/bt_answer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="回答"
-        android:textSize="25dp"
-        android:background="#1586DF"
-        android:textColor="#ffffff"
-        android:layout_marginTop="200dp"
-        app:layout_constraintLeft_toRightOf="@+id/bt_release"
-        app:layout_constraintTop_toBottomOf="@+id/bt_EditMaterials"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_release"
+    <RelativeLayout
+        android:id="@+id/rlyt_headimage"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/bt_release"
-        app:layout_constraintBottom_toTopOf="@id/bottomnav"
-        />
+        android:layout_height="166dp"
+        android:background="#E5E7F1">
 
 
+
+        <com.example.client_zhihu_hzy.widget.roundhead.CircleImageView
+            android:id="@+id/iv_headimage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/hzy"
+            app:border_color="#FFFFFFFF"
+            app:border_width="1dp"
+            tools:ignore="MissingClass" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_headimage"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="12dp"
+            android:text="侯振宇"
+            android:textColor="@color/textcolor"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlyt_collect"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mine_item_height"
+        android:layout_below="@+id/rlyt_headimage"
+        android:background="@drawable/bg_list"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <ImageView
+            android:id="@+id/iv_icon_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/tiwen" />
+
+
+        <TextView
+            android:id="@+id/tv_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/mine_item_marginLeft"
+            android:layout_toRightOf="@+id/iv_icon_heart"
+            android:text="@string/mine_collect"
+            android:textColor="@color/textcolor"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/iv_ques"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/mine_item_marginRight"
+            android:background="@drawable/you" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyt_my_order"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mine_item_height"
+        android:layout_below="@+id/rlyt_collect"
+        android:background="@drawable/bg_list"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <ImageView
+            android:id="@+id/iv_icon_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/dada" />
+
+        <TextView
+            android:id="@+id/tv_my_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/mine_item_marginLeft"
+            android:layout_toRightOf="@+id/iv_icon_order"
+            android:text="@string/mine_order"
+            android:textColor="@color/textcolor"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/iv_ans"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/mine_item_marginRight"
+            android:background="@drawable/you" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyt_local"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mine_item_height"
+        android:layout_below="@+id/rlyt_my_order"
+        android:background="@drawable/bg_list"
+        android:paddingLeft="15dp"
+
+        android:paddingRight="15dp">
+
+
+        <ImageView
+            android:id="@+id/iv_icon_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/shoucang" />
+
+        <TextView
+            android:id="@+id/tv_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/mine_item_marginLeft"
+            android:layout_toRightOf="@+id/iv_icon_address"
+            android:text="@string/mine_local"
+            android:textColor="@color/textcolor"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/iv_vote"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/mine_item_marginRight"
+            android:background="@drawable/you" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyt_share"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mine_item_height"
+        android:layout_below="@+id/rlyt_local"
+        android:background="@drawable/bg_list"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <ImageView
+            android:id="@+id/iv_icon_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/zhensc" />
+
+        <TextView
+            android:id="@+id/tv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/mine_item_marginLeft"
+            android:layout_toRightOf="@+id/iv_icon_share"
+            android:text="@string/mine_share"
+            android:textColor="@color/textcolor"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/iv_colle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/mine_item_marginRight"
+            android:background="@drawable/you" />
+    </RelativeLayout>
     <LinearLayout
         android:id="@+id/bottomnav"
         android:layout_width="match_parent"
@@ -154,7 +248,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:button="@null"
-                android:background="#ffffff"
+                android:background="#DBEDFB"
                 android:gravity="center"
                 android:drawableTop="@drawable/xwd"
                 android:text="我 的"
@@ -162,8 +256,5 @@
         </RadioGroup>
     </LinearLayout>
 
+</RelativeLayout>
 
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>

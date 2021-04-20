@@ -59,6 +59,7 @@
         android:layout_height="200dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/shape_edit"
+        android:gravity="top"
         android:hint="请在此处输入您问题的content内容"
         android:maxLines="20"
         android:minLines="15"

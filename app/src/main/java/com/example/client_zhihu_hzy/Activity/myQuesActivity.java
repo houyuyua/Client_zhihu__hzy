@@ -16,13 +16,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.client_zhihu_hzy.RecyclerViewAdapter.AnswerAdapterNew;
-import com.example.client_zhihu_hzy.RecyclerViewAdapter.AnswerItemNew;
-import com.example.client_zhihu_hzy.RecyclerViewAdapter.QuestionItem;
-import com.example.client_zhihu_hzy.RecyclerViewAdapter.QuestionAdapter;
 import com.example.client_zhihu_hzy.R;
-import com.example.client_zhihu_hzy.ReturnData.SingleQuestionData;
+import com.example.client_zhihu_hzy.RecyclerViewAdapter.QuestionAdapter;
+import com.example.client_zhihu_hzy.RecyclerViewAdapter.QuestionItem;
 import com.example.client_zhihu_hzy.ReturnData.HomeReturnData;
+import com.example.client_zhihu_hzy.ReturnData.SingleQuestionData;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -34,36 +32,27 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class myQuesActivity extends AppCompatActivity implements View.OnClickListener{
+    private Button button_MinePage;
     private List<QuestionItem> questionItemList = new ArrayList<>();
-    private  Button buttonMine;
-    private Button buttonPublish;
-    private Button buttonHomePage;
-    private Button buttonHot;
     private RecyclerView mQuestionRecyclerView;
     private HomeReturnData homeReturnData;
     private String originAddress = "http://47.116.128.111:8080/question";
-//    ///question?cursor=2,1&size=15&search=Java&orderby=heat
-//    private String timeOrderAddress = "?&size=25&search=Java&orderby=heat";
-//    private String originAddressNew;
     private QuestionAdapter mQuestionAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
-
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_my_ques);
         initView();
         initEvent();
-//        StringBuffer Address = new StringBuffer(originAddress);
-//        Address.append(timeOrderAddress);//按发布时间排序
-//        originAddressNew = new String(Address);
-//        Log.d("AnswersListActivity","NewAddress is "+originAddressNew);
 
+
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         sendRequestWithQuestionList();
 
         mQuestionAdapter = new QuestionAdapter(questionItemList);
@@ -97,57 +86,39 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     //初始化控件方法
     private void initView() {
-        buttonMine = (Button)findViewById(R.id.bt_Mine);
-        buttonPublish = (Button)findViewById(R.id.bt_Publish);
+
+        button_MinePage = (Button)findViewById(R.id.bt_Mine) ;
         mQuestionRecyclerView = (RecyclerView) findViewById(R.id.rv_All);
-        buttonHomePage = (Button)findViewById(R.id.bt_HomePage);
+
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeLayout);
-        buttonHot =  (Button)findViewById(R.id.zh_rebang);
     }
 
 
     //注册事件方法
     private void initEvent() {
-        buttonMine.setOnClickListener(this);
-        buttonPublish.setOnClickListener(this);
-        buttonHomePage.setOnClickListener(this);
-        buttonHot.setOnClickListener(this);
-        //recyclerView设置布局管理
+        button_MinePage.setOnClickListener(this);
+        //button_homePaglerView设置布局管理
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mQuestionRecyclerView.setLayoutManager(layoutManager);
     }
 
 
-
+    @Override
+    //实现onClick方法
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.bt_Mine :
-                Intent intentMine =new Intent(HomeActivity.this, MineActivity.class);
-                startActivityForResult(intentMine,2);
+            case R.id.bt_Mine:
+                Intent intentHome = new Intent( myQuesActivity.this, MineActivity.class);
+                startActivityForResult(intentHome,1);
+
                 break;
 
-            case R.id.zh_rebang :
-                Intent intentHot =new Intent(HomeActivity.this, hot.class);
-                startActivityForResult(intentHot,3);
-                break;
 
-            case R.id.bt_Publish :
-                Intent intentPublish = new Intent(HomeActivity.this, PublishActivity.class);
-                startActivityForResult(intentPublish,1);
-                break;
-
-            case R.id.bt_HomePage :
-                break;
 
             default:
                 break;
         }
     }
-
-
-
-
-
     private void sendRequestWithQuestionList(){
         new Thread(new Runnable() {
             @Override
@@ -185,10 +156,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Log.d("ceshi", "list_questions " + homeReturnData.getData().getList_data().toString());
 
         for(int i = 0; i< questionsList.size(); i++){
-
             String url ="https://img2.woyaogexing.com/2021/01/20/6f1c3222b3c547e6bea6a1c39724bf41!400x400.jpeg";
-           if(!(questionsList.get(i).getCreator().getAvatar_url().equals(""))){
-            url = questionsList.get(i).getCreator().getAvatar_url();}
+            if(!(questionsList.get(i).getCreator().getAvatar_url().equals(""))){
+                url = questionsList.get(i).getCreator().getAvatar_url();}
             System.out.println(url);
             Bitmap tmpBitmap = null;
             try {
@@ -199,51 +169,54 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 e.printStackTrace();
                 Log.i("KK下载图片", e.getMessage());
             }
-            QuestionItem questionItem = new QuestionItem(questionsList.get(i).getCreator().getId() ,
-                    questionsList.get(i).getId(),questionsList.get(i).getTitle(),
-                    tmpBitmap,questionsList.get(i).getCreator().getName(),
-                    questionsList.get(i).getContent(),questionsList.get(i).getView_count(),
-                    questionsList.get(i).getAnswer_count());
+            if(questionsList.get(i).getCreator().getId()==7){
+                QuestionItem questionItem = new QuestionItem(questionsList.get(i).getCreator().getId() ,
+                        questionsList.get(i).getId(),questionsList.get(i).getTitle(),
+                        tmpBitmap,questionsList.get(i).getCreator().getName(),
+                        questionsList.get(i).getContent(),questionsList.get(i).getView_count(),
+                        questionsList.get(i).getAnswer_count());
 
 
-            questionItemList.add(questionItem);
+                questionItemList.add(questionItem);}
         }
 
-       // Handler(homeReturn_data);
-    }
 
-    private void Handler(HomeReturnData homeReturnData){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if(homeReturnData.getMessage().equals("OK")) {
-                    Toast.makeText(HomeActivity.this, "问题列表加载成功", Toast.LENGTH_LONG).show();
+//                    textViewTitle.setText(questionTitle);
+//                    textViewViews.setText(viewCount+"浏览");
+//                    textViewAnswers.setText(answersCount+"回答");
+                    Toast.makeText(myQuesActivity.this, "问题列表加载成功", Toast.LENGTH_LONG).show();
                 }
 
             }
         });
+        // Handler(homeReturn_data);
     }
 
-
- //    protected void onResume() {}
-
+//    private void Handler(HomeReturnData homeReturnData){
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                if(homeReturnData.getMessage().equals("OK")) {
+//                    Toast.makeText(HomeActivity.this, "问题列表加载成功", Toast.LENGTH_LONG).show();
+//                }
+//
+//            }
+//        });
+//    }
 
     protected void onActivityResult(int requestCode, int resultCode ,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case 1://publish
                 break;
-            case 2://mine
-                break;
-            case 3://HOT
-                break;
+
             default:
                 break;
         }
     }
-
-
-
-
 
 }

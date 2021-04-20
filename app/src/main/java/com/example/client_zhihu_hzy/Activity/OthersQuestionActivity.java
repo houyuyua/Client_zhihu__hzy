@@ -260,11 +260,12 @@ public class OthersQuestionActivity extends AppCompatActivity implements View.On
 //        List<SingleAnswerData> answersList = answersListReturnData.getData();//回答列表提取成功
 
         for(int i = 0; i< answersList.size(); i++){
-            AnswerItemNew answerItem = new AnswerItemNew(answersList.get(i).getCreator().getId(),
-                    answersList.get(i).getCreator().getName(),
-                    R.drawable.headimage,answersList.get(i).getContent(),10,10,answersList.get(i).getId());//content为后端的回答，等于answer
-            answerItemList.add(answerItem);
-            Log.d("answerItemList", "answersList is " + answerItemList);
+
+                AnswerItemNew answerItem = new AnswerItemNew(answersList.get(i).getCreator().getId(),
+                        answersList.get(i).getCreator().getName(),
+                        R.drawable.hzy, answersList.get(i).getContent(), 10, 10, answersList.get(i).getId());//content为后端的回答，等于answer
+                answerItemList.add(answerItem);
+                Log.d("answerItemList", "answersList is " + answerItemList);
 
 
         }

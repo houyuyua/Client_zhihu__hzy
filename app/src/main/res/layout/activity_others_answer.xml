@@ -68,7 +68,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:src="@drawable/headimage"
+            android:src="@drawable/xhzy"
             />
 
         <TextView
@@ -92,6 +92,7 @@
         android:textSize="18dp"
         android:textColor="@color/black"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bt_HowManyAgree"
         app:layout_constraintVertical_bias="1.0"
@@ -99,68 +100,92 @@
 
 
 
+    <ToggleButton
+        android:id="@+id/ToggleBtAgree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/toggle_day_bg_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textOff="赞成"
+        android:textOn="赞成"
+
+         />
+
+
+    <!--        <com.sackcentury.shinebuttonlib.ShineButton-->
+<!--            android:id="@+id/bt_heart"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            app:btn_color="@android:color/darker_gray"-->
+<!--            app:btn_fill_color="#f26d7d"-->
+<!--            app:siShape="@raw/heart"-->
+<!--            android:elevation="10dp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/tvViews"-->
+<!--            app:layout_constraintRight_toLeftOf="@+id/bt_comment"-->
+<!--            android:layout_marginRight="50dp"-->
+<!--            />-->
+<!--        <TextView-->
+<!--            android:id="@+id/tvViews"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="点赞"-->
+<!--            android:textSize="10dp"-->
+
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintRight_toLeftOf="@+id/bt_comment"-->
+<!--            android:layout_marginRight="55dp"-->
+
+<!--            />-->
 
 
 
-        <com.sackcentury.shinebuttonlib.ShineButton
-            android:id="@+id/bt_heart"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_centerInParent="true"
-            app:btn_color="@android:color/darker_gray"
-            app:btn_fill_color="#f26d7d"
-            app:siShape="@raw/heart"
-            android:elevation="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvViews"
-            app:layout_constraintRight_toLeftOf="@+id/bt_comment"
-            android:layout_marginRight="50dp"
-            />
-        <TextView
-            android:id="@+id/tvViews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="点赞"
-            android:textSize="10dp"
+<!--        <com.sackcentury.shinebuttonlib.ShineButton-->
+<!--            android:id="@+id/bt_star"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            app:btn_color="@android:color/darker_gray"-->
+<!--            app:btn_fill_color="#996699"-->
+<!--            app:enable_flashing="true"-->
+<!--            app:shine_size="40dp"-->
+<!--            app:siShape="@raw/star"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/tv_star"-->
+<!--            app:layout_constraintRight_toLeftOf="@+id/bt_comment"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            />-->
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/bt_comment"
-            android:layout_marginRight="55dp"
+<!--        <TextView-->
+<!--            android:id="@+id/tv_star"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="收藏"-->
+<!--            android:textSize="10dp"-->
 
-            />
-
-
-
-        <com.sackcentury.shinebuttonlib.ShineButton
-            android:id="@+id/bt_star"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerInParent="true"
-            app:btn_color="@android:color/darker_gray"
-            app:btn_fill_color="#996699"
-            app:enable_flashing="true"
-            app:shine_size="40dp"
-            app:siShape="@raw/star"
-            app:layout_constraintBottom_toTopOf="@+id/tv_star"
-            app:layout_constraintRight_toLeftOf="@+id/bt_comment"
-            android:layout_marginRight="10dp"
-            />
-
-        <TextView
-            android:id="@+id/tv_star"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="收藏"
-            android:textSize="10dp"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/bt_comment"
-            android:layout_marginRight="15dp"
-            />
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintRight_toLeftOf="@+id/bt_comment"-->
+<!--            android:layout_marginRight="15dp"-->
+<!--            />-->
 
 
+    <ToggleButton
+        android:id="@+id/ToggleBtDisagree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
 
-        <Button
+        android:background="@drawable/toggle_day_bg_selector"
+        android:textOff="反对"
+        android:textOn="反对"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@id/ToggleBtAgree"
+        app:layout_constraintStart_toEndOf="@+id/ToggleBtAgree" />
+
+    <Button
             android:id="@+id/bt_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

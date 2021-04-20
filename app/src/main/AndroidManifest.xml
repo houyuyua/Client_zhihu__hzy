@@ -11,23 +11,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name="com.example.client_zhihu_hzy.Activity.EditAnswerActivity"></activity>
-        <activity android:name="com.example.client_zhihu_hzy.Activity.MyAnswerActivity"></activity>
-        <activity android:name="com.example.client_zhihu_hzy.Activity.WriteAnswerActivity" />
-        <activity android:name="com.example.client_zhihu_hzy.Activity.EditQuestionActivity" />
-        <activity android:name="com.example.client_zhihu_hzy.Activity.OthersQuestionActivity" />
-        <activity android:name="com.example.client_zhihu_hzy.Activity.OthersAnswerActivity" />
-        <activity android:name="com.example.client_zhihu_hzy.Activity.MyQuestionActivity" />
-        <activity android:name="com.example.client_zhihu_hzy.Activity.PublishActivity" />
-        <activity android:name="com.example.client_zhihu_hzy.Activity.MineActivity" />
-        <activity android:name="com.example.client_zhihu_hzy.Activity.HomeActivity" />
-        <activity android:name="com.example.client_zhihu_hzy.Activity.RegisterActivity" />
-        <activity android:name="com.example.client_zhihu_hzy.Activity.MainActivity">
+        <activity android:name=".Activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".Activity.myVoteActivity" />
+        <activity android:name=".Activity.myAnsActivity" />
+        <activity android:name=".Activity.myQuesActivity" />
+        <activity android:name=".Activity.hot" />
+        <activity android:name=".Activity.EditAnswerActivity" />
+        <activity android:name=".Activity.MyAnswerActivity" />
+        <activity android:name=".Activity.WriteAnswerActivity" />
+        <activity android:name=".Activity.EditQuestionActivity" />
+        <activity android:name=".Activity.OthersQuestionActivity" />
+        <activity android:name=".Activity.OthersAnswerActivity" />
+        <activity android:name=".Activity.MyQuestionActivity" />
+        <activity android:name=".Activity.PublishActivity" />
+        <activity android:name=".Activity.MineActivity" />
+        <activity android:name=".Activity.HomeActivity" />
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.MainActivity">
+
         </activity>
     </application>
 

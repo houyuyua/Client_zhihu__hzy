@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">client_zhihu_hzy</string>
+    <!--我的-->
+    <string name="dialogPicture">图库</string>
+    <string name="photo">拍照</string>
+    <string name="mine_collect">我的提问</string>
+    <string name="mine_order">我的回答</string>
+    <string name="mine_local">我的点赞</string>
+    <string name="mine_share">我的收藏</string>
+    <string name="order_success">预约成功</string>
+    <string name="order_failure">预约失效</string>
 </resources>

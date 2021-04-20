@@ -1,5 +1,7 @@
 package com.example.client_zhihu_hzy.RecyclerViewAdapter;
 
+import android.graphics.Bitmap;
+
 public class QuestionItem {
 
 
@@ -10,13 +12,13 @@ public class QuestionItem {
     private String title;
     private String describe;
     private String name;
-    private int headImageId;
+    private Bitmap headImageId;
 //    private String avatar_url;
 //    private String agreeNumber;
 //    private String commentNumber;
 
 
-    public QuestionItem(int uId, int questionId, String title, int headImageId, String name, String describe, int ViewsCount, int AnswersCount){
+    public QuestionItem(int uId, int questionId, String title, Bitmap headImageId, String name, String describe, int ViewsCount, int AnswersCount){
         this.uId=uId;
         this.title=title;
         this.describe=describe;
@@ -47,7 +49,7 @@ public class QuestionItem {
 //    public String getAvatar_url() {
 //        return avatar_url;
 //    }
-    public int getHeadImageId() {
+    public Bitmap getHeadImageId() {
         return headImageId;
     }
 
